@@ -13,8 +13,9 @@ import json
 import pandas as pd
 import pickle
 import numpy as np
-TPS_DIR = '../data/music'
-TP_file = os.path.join(TPS_DIR, 'Digital_Music_5.json')
+from unidecode import unidecode
+TPS_DIR = '../data/film'
+TP_file = os.path.join(TPS_DIR, 'imdb_data.json')
 
 f= open(TP_file)
 users_id=[]
@@ -25,16 +26,16 @@ np.random.seed(2017)
 
 for line in f:
     js=json.loads(line)
-    if str(js['reviewerID'])=='unknown':
-        print "unknown"
-        continue
-    if str(js['asin'])=='unknown':
-        print "unknown2"
-        continue
-    reviews.append(js['reviewText'])
-    users_id.append(str(js['reviewerID'])+',')
-    items_id.append(str(js['asin'])+',')
-    ratings.append(str(js['overall']))
+#    if str(js['user'])=='unknown':
+#        print "unknown"
+#        continue
+#    if str(js['film_id'])=='unknown':
+#        print "unknown2"
+#        continue
+    reviews.append(unidecode(js['review']))
+    users_id.append(unidecode(js['user'])+',')
+    items_id.append(str(js['film_id'])+',')
+    ratings.append(str(js['rating']))
 data=pd.DataFrame({'user_id':pd.Series(users_id),
                    'item_id':pd.Series(items_id),
                    'ratings':pd.Series(ratings),
@@ -80,9 +81,9 @@ test_idx[test] = True
 
 tp_test = tp_1[test_idx]
 tp_valid = tp_1[~test_idx]
-tp_train.to_csv(os.path.join(TPS_DIR, 'music_train.csv'), index=False,header=None)
-tp_valid.to_csv(os.path.join(TPS_DIR, 'music_valid.csv'), index=False,header=None)
-tp_test.to_csv(os.path.join(TPS_DIR, 'music_test.csv'), index=False,header=None)
+tp_train.to_csv(os.path.join(TPS_DIR, 'film_train.csv'), index=False,header=None)
+tp_valid.to_csv(os.path.join(TPS_DIR, 'film_valid.csv'), index=False,header=None)
+tp_test.to_csv(os.path.join(TPS_DIR, 'film_test.csv'), index=False,header=None)
 
 user_reviews={}
 item_reviews={}
