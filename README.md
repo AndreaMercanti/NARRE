@@ -31,18 +31,15 @@ Author: Chong Chen (cstchenc@163.com)
 
 ## Dataset
 
-The author, in his experiments, used the datasets from Amazon 5-core(http://jmcauley.ucsd.edu/data/amazon) and Yelp Challenge 2017(https://www.yelp.com/dataset_challenge).
+The author, in his experiments, used the datasets from [Amazon 5-core](http://jmcauley.ucsd.edu/data/amazon) and [Yelp Challenge 2017](https://www.yelp.com/dataset_challenge). 
 In mine, I used a personal dataset built ad hoc by my repo [URB-RS](https://github.com/AndreaMercanti/URB-RS.git) and set it in the `data/film` folder, previously made. 
-Besides, the codes use a Google's vector of pretrained words weights, so download and unzip it in the `data` folder from [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit).
+
+Besides, the codes use a Google's vector of pretrained words weights, so download and unzip it in the `data/` folder from [here](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit).
 Then change its name simply into `google.bin` and you're ready to go!
 
 ## Example to run the codes
 
-The folowing commands must be run from the root folder `NARRE`.
-
-```
-mkdir data/film
-```
+The folowing commands must be run from the root folder `NARRE/`.
 
 Data preprocessing:
 
